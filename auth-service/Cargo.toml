@@ -6,3 +6,21 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+actix-cors = "0.6.5"
+actix-web =  { version = "4.4", features = ["rustls-0_21"] }
+anyhow = "1.0.79"
+async-trait = "0.1.77"
+dotenv = "0.15.0"
+env_logger = "0.10.1"
+lazy_static = "1.4.0"
+mongodb = "2.8.0"
+rauthy-client = {version= "0.1.1", features = ["actix-web"] }
+serde_json = "1.0.93"
+serde = "1.0.152"
+
+## Logging
+tracing = "0.1.40"
+tracing-subscriber = { version = "0.3.18", features = ["registry", "env-filter"] }
+tracing-futures = "0.2.5"
+tracing-log = "0.2.0"
+tracing-bunyan-formatter = "0.3.2"

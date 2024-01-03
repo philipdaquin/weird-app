@@ -1,4 +1,4 @@
-use super::{account::Account, link_details::LinkDetails};
+use super::{account::Account, link_details::LinkDetails, user_links::UserLinks};
 
 #[derive(Debug, Clone)]
 pub struct UserDetails { 
@@ -12,5 +12,11 @@ pub struct UserDetails {
     pub meta_description: String, 
     pub meta_author: String, 
     pub meta_keywords: Vec<String>,
-    pub links: Vec<LinkDetails>
+    pub links: UserLinks
+}
+
+impl UserDetails {
+    pub fn get_id(&self) -> &str { 
+        return &self.id;
+    }
 }

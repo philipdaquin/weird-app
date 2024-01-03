@@ -1,0 +1,42 @@
+version: '1.0'
+
+services:
+  whisper-service: 
+    build: .
+    container_name: whisper-service
+    ports:
+      - "4001:4001"
+    depends_on: 
+      mongo-db:   
+        condition: service_started
+      redis-db:  
+        condition: service_started
+    networks:
+      - whisper-local
+
+
+  mongo-db:
+    image: "mongo:latest"
+    container_name: mongo-db
+    restart: always
+    # environment:
+    #   - MONGO_INITDB_ROOT_USERNAME=username
+    #   - MONGO_INITDB_ROOT_PASSWORD=password
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongodb_data_container:/data/db
+    networks:
+      - whisper-local
+  
+  # redis-db:
+  #   image: redis:latest
+  #   container_name: redis-db
+  #   command: [ "redis-server", "--protected-mode", "no" ]
+  #   ports:
+  #     - '6379:6379'
+networks:
+  whisper-local: 
+    external: false
+volumes:
+  mongodb_data_container:

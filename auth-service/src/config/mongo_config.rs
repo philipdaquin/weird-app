@@ -42,6 +42,8 @@ impl MongoDbClient {
             .password(MONGODB_PASSWORD.to_string())
             .build();   
         client_options.credential = Some(credential);
+
+        // Create a client
         let client = Client::with_options(client_options)
             .expect("Unable to establish connection");
     
@@ -51,6 +53,7 @@ impl MongoDbClient {
 
         Ok(MONGOCONN.get().unwrap())
     }
+    
     /// Returns the Instantiation of Collection 
     pub fn get_collection<T>(column_name: &str, db_name: &str) -> Collection<T> { 
         get_mongo_client().0.database(db_name).collection(column_name)

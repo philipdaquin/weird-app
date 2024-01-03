@@ -1,4 +1,4 @@
-use super::{account::Account, enums::{lang::Language, theme::Theme}};
+use super::{account::Account, enums::{Language, Theme}};
 
 
 #[derive(Debug, Clone)]

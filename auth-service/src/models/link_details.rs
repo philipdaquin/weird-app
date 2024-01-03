@@ -1,5 +1,5 @@
 use super::account::Account;
-use super::enums::link_type::LinkType;
+use super::enums::LinkType;
 
 
 #[derive(Debug, Clone)]

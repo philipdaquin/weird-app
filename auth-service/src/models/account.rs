@@ -1,3 +1,5 @@
+use serde_derive::{Deserialize, Serialize};
+
 use super::system_preference::SystemPreference;
 
 /*
@@ -5,7 +7,7 @@ use super::system_preference::SystemPreference;
     Testing Simple Data Model    
 
 */
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct Account { 
     id: i64,
     pub first_name: Option<String>,

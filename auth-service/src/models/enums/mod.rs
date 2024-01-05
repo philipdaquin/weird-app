@@ -1,14 +1,15 @@
+use serde_derive::{Serialize, Deserialize};
 
 
-#[derive(Debug, Clone)]
+
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub enum Language { 
     ENGLISH, 
     ITALIAN,
     SPANISH
 }
 
-
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub enum LinkType { 
     TWITTER, 
     INSTRAGRAM,
@@ -22,7 +23,7 @@ pub enum LinkType {
     CUSTOM
 }
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub enum Theme { 
     AUTO,
     LIGHT,

@@ -24,7 +24,6 @@ pub async fn new_server(port: u32) -> std::io::Result<()> {
         .expect("Missing connection URI to MongoDb server");
 
 
-
     log::info!("🚀 Starting HTTP server on port 'http://{}:{}' ", host, port);
     log::info!("📢 Query at https://studio.apollographql.com/dev");
     

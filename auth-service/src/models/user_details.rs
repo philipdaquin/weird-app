@@ -1,6 +1,8 @@
+use serde_derive::{Serialize, Deserialize};
+
 use super::{account::Account, link_details::LinkDetails, user_links::UserLinks};
 
-#[derive(Debug, Clone, Default)]
+#[derive(Debug, Clone, Default, Serialize, Deserialize)]
 pub struct UserDetails { 
     id: String, 
     pub name: String,

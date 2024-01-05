@@ -6,10 +6,16 @@ use lazy_static::lazy_static;
 lazy_static! { 
     pub static ref MONGO_URI: String = std::env::var("MONGODB_URI")
         .unwrap_or_else(|_| "mongodb://username:password@mongo-db:27017".into());
+    
     pub static ref MONGODB_USERNAME: String = std::env::var("MONGODB_USERNAME")
         .unwrap_or_else(|_| "username".into());
+    
     pub static ref MONGODB_PASSWORD: String = std::env::var("MONGODB_PASSWORD")
         .unwrap_or_else(|_| "password".into());
+
+    
+    pub static ref DB_NAME: String = std::env::var("DB_NAME")
+        .unwrap_or_else(|_| "new-mongo-db".into());
 }
 
 
@@ -37,11 +43,11 @@ impl MongoDbClient {
             .expect("Failed to created MongoDB client");
 
         // Disabling Authentication for Development mode 
-        let credential = Credential::builder()
-            .username(MONGODB_USERNAME.to_string())
-            .password(MONGODB_PASSWORD.to_string())
-            .build();   
-        client_options.credential = Some(credential);
+        // let credential = Credential::builder()
+        //     .username(MONGODB_USERNAME.to_string())
+        //     .password(MONGODB_PASSWORD.to_string())
+        //     .build();   
+        // client_options.credential = Some(credential);
 
         // Create a client
         let client = Client::with_options(client_options)
@@ -55,7 +61,10 @@ impl MongoDbClient {
     }
     
     /// Returns the Instantiation of Collection 
-    pub fn get_collection<T>(column_name: &str, db_name: &str) -> Collection<T> { 
-        get_mongo_client().0.database(db_name).collection(column_name)
+    pub fn get_collection<T>(column_name: &str) -> Collection<T> { 
+        get_mongo_client()
+            .0
+            .database(DB_NAME.as_str())
+            .collection(column_name)
     }  
 }

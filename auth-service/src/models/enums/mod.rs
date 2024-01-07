@@ -2,8 +2,9 @@ use serde_derive::{Serialize, Deserialize};
 
 
 
-#[derive(Debug, Clone, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Default)]
 pub enum Language { 
+    #[default]
     ENGLISH, 
     ITALIAN,
     SPANISH
@@ -23,9 +24,11 @@ pub enum LinkType {
     CUSTOM
 }
 
-#[derive(Debug, Clone, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize, PartialEq,  Default)]
 pub enum Theme { 
     AUTO,
+
+    #[default]
     LIGHT,
     DARK
 }

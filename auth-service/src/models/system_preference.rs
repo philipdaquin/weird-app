@@ -3,7 +3,7 @@ use serde_derive::{Deserialize, Serialize};
 use super::{account::Account, enums::{Language, Theme}};
 
 
-#[derive(Debug, Clone, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize, Default, PartialEq)]
 pub struct SystemPreference { 
     id: String, 
     pub language: Language,

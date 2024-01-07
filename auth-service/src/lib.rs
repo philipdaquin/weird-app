@@ -1,5 +1,5 @@
 
-mod models;
+pub mod models;
 pub mod server;
 pub mod error;
 mod config;
